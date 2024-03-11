@@ -15,17 +15,18 @@ nav ul {
     background-color: #333;
     text-align: center;
     padding: 10px 0;
+    margin: 0;
 }
 
 nav ul li {
-    display: inline;
+    display: inline-block; /* Changed from inline to inline-block for better spacing control */
 }
 
 nav ul li a {
     text-decoration: none;
     color: white;
     padding: 15px 20px;
-    display: inline-block;
+    display: block; /* Changed from inline-block to block for better click area */
 }
 
 section {
@@ -33,25 +34,32 @@ section {
 }
 
 .intro {
-    background: url('data_science_image.jpg') no-repeat center center/cover;
-    height: 100vh;
-    color: #fff;
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
 
-.skills ul {
+.skills ul, .skills-container {
     list-style-type: none;
+    padding: 0; /* Removes padding */
 }
 
-.skills li {
+.skills li, .skill-box {
     background: #f4f4f4;
     margin: 10px;
     padding: 10px;
     display: inline-block;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.skill-box:hover, .skills li:hover {
+    background-color: #e1e1e1;
+    transform: translateX(10px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
 }
 
 .project {
@@ -72,4 +80,19 @@ form button {
     color: white;
     border: 0;
     cursor: pointer;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    nav ul li {
+        display: block; /* Stacks the nav items under each other on smaller screens */
+    }
+
+    .skills li, .skill-box, .project {
+        width: 100%; /* Makes sure they don't overflow the screen */
+    }
+
+    form input, form textarea, form button {
+        width: 100%; /* Ensures form elements don't overflow */
+    }
 }
